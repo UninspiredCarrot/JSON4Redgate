@@ -48,7 +48,7 @@ class DataMaskerFileTest {
     }
 
     @Test
-    void testPeopleARules() throws Exception {
+    void testPeopleARules() {
         String actualOutput = runDataMasker("people.json", "a.rules.json");
         String expectedOutput = """
             [{"Name":"****","Email":"Jack@example.com"},{"Name":"*******","Email":"Bethany@redgate.com"}]
@@ -58,7 +58,7 @@ class DataMaskerFileTest {
     }
 
     @Test
-    void testPeopleBRules() throws Exception {
+    void testPeopleBRules() {
         String actualOutput = runDataMasker("people.json", "b.rules.json");
         String expectedOutput = """
             [{"Name":"****","Email":"****@example.com"},{"Name":"*******","Email":"*******@redgate.com"}]
@@ -68,7 +68,7 @@ class DataMaskerFileTest {
     }
 
     @Test
-    void testNutsCRules() throws Exception {
+    void testNutsCRules() {
         String actualOutput = runDataMasker("nuts.json", "c.rules.json");
         String expectedOutput = """
             {"nut":"******","nuts":"pea***, brazil ***"}

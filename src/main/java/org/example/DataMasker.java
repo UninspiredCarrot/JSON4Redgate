@@ -55,16 +55,23 @@ public class DataMasker {
         return rules;
     }
 
-    // Mask JSON content based on rules
     private static String maskJsonContent(String jsonContent, Map<String, String> rules) {
         if (jsonContent.trim().startsWith("[")) {
             // Handle JSON array
             JSONArray jsonArray = new JSONArray(jsonContent);
-            for (int i = 0; i < jsonArray.length(); i++) {
-                JSONObject jsonObject = jsonArray.getJSONObject(i);
+            if (jsonArray.length() == 1) {
+                // If there's only one element, return it as a JSONObject
+                JSONObject jsonObject = jsonArray.getJSONObject(0);
                 applyMasking(jsonObject, rules);
+                return jsonObject.toString(); // Return as a single object
+            } else {
+                // Handle the array with multiple elements
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject jsonObject = jsonArray.getJSONObject(i);
+                    applyMasking(jsonObject, rules);
+                }
+                return jsonArray.toString(); // Return as an array
             }
-            return jsonArray.toString();
         } else {
             // Handle JSON object
             JSONObject jsonObject = new JSONObject(jsonContent);
@@ -72,6 +79,7 @@ public class DataMasker {
             return jsonObject.toString();
         }
     }
+
 
     // Apply masking to a JSON object
     // Apply masking to a JSON object

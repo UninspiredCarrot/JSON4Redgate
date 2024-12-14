@@ -54,7 +54,7 @@ class DataMaskerFileTest {
             [{"Name":"****","Email":"Jack@example.com"},{"Name":"*******","Email":"Bethany@redgate.com"}]
         """.trim();
 
-        assertTrue(jsonEquals(actualOutput, expectedOutput));
+        assertTrue(jsonEquals(actualOutput, expectedOutput), "The output JSON for peopleA rules does not match the expected value.");
     }
 
     @Test
@@ -64,7 +64,7 @@ class DataMaskerFileTest {
             [{"Name":"****","Email":"****@example.com"},{"Name":"*******","Email":"*******@redgate.com"}]
         """.trim();
 
-        assertTrue(jsonEquals(actualOutput, expectedOutput));
+        assertTrue(jsonEquals(actualOutput, expectedOutput), "The output JSON for peopleB rules does not match the expected value.");
     }
 
     @Test
@@ -74,6 +74,8 @@ class DataMaskerFileTest {
             {"nut":"******","nuts":"pea***, brazil ***"}
         """.trim();
 
-        assertTrue(jsonEquals(actualOutput, expectedOutput));
+        assertTrue(jsonEquals(actualOutput, expectedOutput), "The output JSON for nutsC rules does not match the expected value.");
     }
+
+    // Add more test cases for edge scenarios, such as empty JSON objects, invalid files, etc.
 }

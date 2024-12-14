@@ -8,7 +8,9 @@ compare_output() {
     local expected="$2"
     local test_name="$3"
 
+    # shellcheck disable=SC2155
     local sorted_actual=$(echo "$actual" | jq -S .)
+    # shellcheck disable=SC2155
     local sorted_expected=$(echo "$expected" | jq -S .)
 
     if [ "$sorted_actual" == "$sorted_expected" ]; then
